@@ -8,7 +8,6 @@ let globalVariable = 7;
   console.log("Block variable:", blockVariable);
 
 
-// Task 4: Perform a mathematical operation on variables
 let num1 = 20;
 let num2 = 30;
 let result = num1 + num2;
@@ -24,3 +23,37 @@ const myObject = {
 };
 
 console.log("Object variable:", myObject);
+
+function add(x, y) {
+    return x + y;
+}
+
+const result = add(7, 14);
+console.log(result); 
+
+const person = {
+    name: "Mary",
+    age: 30,
+    greet: function() {
+        console.log(`Hi, I'm ${this.name} and I'm ${this.age} years old.`);
+    }
+};
+
+person.greet(); 
+
+
+
+    const button = document.getElementById("firstButton");
+
+    function handleClick(event) {
+        console.log("Button clicked!");
+    }
+
+    button.addEventListener("click", handleClick);
+
+
+
+
+
+
+
