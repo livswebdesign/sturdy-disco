@@ -28,7 +28,7 @@ function add(x, y) {
     return x + y;
 }
 
-const result = add(7, 14);
+const Result = add(7, 14);
 console.log(result); 
 
 const person = {
