@@ -60,8 +60,43 @@ person.greet();
     adder (7,14);
 
 
+    let Name = "Mikala";
+    let age = 26;
+    let occupation = "premise health receptionist";
+    
+    let concatenatedString = `My name is ${Name}, I am ${age} years old, and I work as a ${occupation}.`;
+    
+    console.log(concatenatedString);
+    
+    let temperature = 100;
 
+if (temperature > 85) {
+    console.log("It's hot outside.");
+} else if (temperature > 70) {
+    console.log("It's a pleasant day.");
+} else {
+    console.log("It's cold outside.");
+}
 
+let day = "Sunday";
 
+switch (day) {
+    case "Monday":
+        console.log("It's the start of the school day.");
+        break;
+    case "Friday":
+        console.log("TGIF! It's Friday!");
+        break;
+    case "Sunday":
+        console.log("I have the sunday scaries");
+        break;
+            default:
+        console.log("It's a regular day.");
+}
+let text = "hello world";
+let uppercasedText = text.toUpperCase();
+console.log(uppercasedText);
 
-
+let num = 10.051999;
+let formattedNum = num.toFixed(2); 
+console.log(formattedNum);
