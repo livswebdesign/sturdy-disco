@@ -100,3 +100,26 @@ console.log(uppercasedText);
 let num = 10.051999;
 let formattedNum = num.toFixed(2); 
 console.log(formattedNum);
+var colorValue = 0;
+
+function changeBackgroundColor() {
+    var colorDiv = document.getElementById("colorDiv");
+    
+
+    colorValue = Math.floor(Math.random() * 16777216);
+    
+   
+    var colorHex = '#' + colorValue.toString(16).padStart(6, '0');
+    
+ 
+    colorDiv.style.backgroundColor = colorHex;
+    colorDiv.innerHTML = colorHex;
+}
+for (var i = 0; i < 5; i++) {
+    changeBackgroundColor();
+}
+var counter = 0;
+while (counter < 3) {
+    changeBackgroundColor();
+    counter++;
+}
