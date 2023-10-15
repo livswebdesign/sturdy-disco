@@ -123,3 +123,33 @@ while (counter < 3) {
     changeBackgroundColor();
     counter++;
 }
+const person = {
+    name: "victoria",
+    hygieneHabits: [],
+    addHygieneHabit: function (habitName, isCompleted) {
+      const habit = {
+        name: habitName,
+        completed: isCompleted
+      };
+      this.hygieneHabits.push(habit);
+    }
+  };
+  
+  
+  person.addHygieneHabit("Brush teeth", true);
+  person.addHygieneHabit("Wash face", true);
+  person.addHygieneHabit("Take medicine", false);
+  person.addHygieneHabit("Walk dog", true)
+  
+  function displayHygieneHabits() {
+    console.log(`${person.name}'s Hygiene Habits:`);
+    person.hygieneHabits.forEach((habit, index) => {
+      const status = habit.completed ? "✅" : "❌";
+      console.log(`${index + 1}. ${habit.name} ${status}`);
+    });
+  }
+  ß
+displayHygieneHabits();
+person.hygieneHabits[2].completed = true;
+  displayHygieneHabits();
+  
