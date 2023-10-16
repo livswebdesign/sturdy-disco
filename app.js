@@ -1,155 +1,116 @@
-console.log("hello mrs.escobar!");
+const game = ()=> {
+    let pScore = 0;
+    let cScore = 0;
+    //start the game
+    const startGame = () =>{
+        const playBtn = document.querySelector(".introbutton");
+        const introScreen = document.querySelector (".intro");
+        const match = document.querySelector(".match");
 
-// This is a global variable
-let globalVariable = 7;
+        playBtn.addEventListener("click", () => {
+            introScreen.classList.add("fadeOut");
+            match.classList.add("fadeIn");
+        });
+    };
 
-  // This is a block variable
-  let blockVariable = 14;
-  console.log("Block variable:", blockVariable);
+    //playmatch
+    const playMatch = () =>{
+        const options = document.querySelectorAll(".options button");
+        const playerHand = document.querySelector (".player-hand");
+        const computerHand = document.querySelector(".computer-hand");
+        const hands = document.querySelectorALL ('.hands img');
 
+      hands.forEach(hand => {
+        hand.addEventListener("animationend", function (){
+            this.style.animation = "";
+        })
+      })
+        //computer options
+        const computerOptions = ['rock', 'paper','sissors'];
 
-let num1 = 20;
-let num2 = 30;
-let result = num1 + num2;
-console.log("Result of addition:", result);
+        options.forEach(option=>{
+            option.addEventListener("click", function (){
+                //computer choice
+        const computerNumber = Math.floor(Math.random() * 3);
+        const computerChoice = computerOptions [computerNumber];
+     setTimeout(() => {
+           //here is where we call compare hands
+           compareHands(this.textContent, computerChoice);
+           //update images
+          playerHand.src =`./assets/${this.textContent}.png`;
+          computerHand.src =`./assets/${computerChoice}.png`;
+          }, 2000)
+        //animation
+        playerHand.style.animation = "shakePlayer 2s ease";
+        computerHand.style.animation = "shakeComputer 2s ease";
+        
+            });
+        });
 
-let myString = "This is a string variable.";
+     };
+     const updateScore = () => {
+        const playerScore = document.querySelector(".player-score p");
+        const computerScore = document.querySelector(".computer-score p");
+        playerScore.textContent = pScore;
+        computerScore.textContent = cScore;
 
-console.log(myString);
+     }
+     const compareHands = (playerChoice, computerChoice) =>{
+        //update text
+        const winner = document.querySelector("winner");
+        //checking for a tie
+        if(playerChoice === computerChoice){
+            winner.textContent = "it is a tie";
+            return;
+            }
+            //check for rock
+            if(playerChoice === "rock"){
+                if(computerChoice === "sissors"){
+                    winner.textContent = "player wins";
+                    pScore++;
+                    updateScore();
+                    return;
+                } else {
+                    winner.textContent = "computer wins";
+                    cScore++;
+                    updateScore();
+                    return;
+                }
+            }
+             //check for paper
+             if(playerChoice === "paper"){
+                if(computerChoice === "sissors"){
+                    winner.textContent = "computer wins";
+                    cScore++;
+                    updateScore();
+                    return;
+                } else {
+                    winner.textContent = "player wins";
+                    pScore++;
+                    updateScore();
+                    return;
+                }
+            }
+             //check for sissors
+             if(playerChoice === "sissors"){
+                if(computerChoice === "rock"){
+                    winner.textContent = "computer wins";
+                    cScore++;
+                    updateScore();
+                    return;
+                } else {
+                    winner.textContent = "player wins";
+                    pScore++;
+                    updateScore();
+                    return;
+                }
+            }
 
-const myObject = {
-  key1: "value1",
-  key2: "value2",
+     }
+    //is call all the inner functions
+    startGame();
 };
 
-console.log("Object variable:", myObject);
-
-function add(x, y) {
-    return x + y;
-}
-
-const Result = add(7, 14);
-console.log(result); 
-
-const person = {
-    name: "Mary",
-    age: 30,
-    greet: function() {
-        console.log(`Hi, I'm ${this.name} and I'm ${this.age} years old.`);
-    }
-};
-
-person.greet(); 
-
-
-
-    const button = document.getElementById("firstButton");
-
-    function handleClick(event) {
-        console.log("Button clicked!");
-    }
-
-    button.addEventListener("click", handleClick);
-
-    const name = "victoria a";
-
-    function adder(num1, num2){
-        console.log(num1 + num2);
-    }
-
-    adder (7,14);
-
-
-    let Name = "Mikala";
-    let age = 26;
-    let occupation = "premise health receptionist";
-    
-    let concatenatedString = `My name is ${Name}, I am ${age} years old, and I work as a ${occupation}.`;
-    
-    console.log(concatenatedString);
-    
-    let temperature = 100;
-
-if (temperature > 85) {
-    console.log("It's hot outside.");
-} else if (temperature > 70) {
-    console.log("It's a pleasant day.");
-} else {
-    console.log("It's cold outside.");
-}
-
-let day = "Sunday";
-
-switch (day) {
-    case "Monday":
-        console.log("It's the start of the school day.");
-        break;
-    case "Friday":
-        console.log("TGIF! It's Friday!");
-        break;
-    case "Sunday":
-        console.log("I have the sunday scaries");
-        break;
-            default:
-        console.log("It's a regular day.");
-}
-let text = "hello world";
-let uppercasedText = text.toUpperCase();
-console.log(uppercasedText);
-
-let num = 10.051999;
-let formattedNum = num.toFixed(2); 
-console.log(formattedNum);
-var colorValue = 0;
-
-function changeBackgroundColor() {
-    var colorDiv = document.getElementById("colorDiv");
-    
-
-    colorValue = Math.floor(Math.random() * 16777216);
-    
-   
-    var colorHex = '#' + colorValue.toString(16).padStart(6, '0');
-    
- 
-    colorDiv.style.backgroundColor = colorHex;
-    colorDiv.innerHTML = colorHex;
-}
-for (var i = 0; i < 5; i++) {
-    changeBackgroundColor();
-}
-var counter = 0;
-while (counter < 3) {
-    changeBackgroundColor();
-    counter++;
-}
-const person = {
-    name: "victoria",
-    hygieneHabits: [],
-    addHygieneHabit: function (habitName, isCompleted) {
-      const habit = {
-        name: habitName,
-        completed: isCompleted
-      };
-      this.hygieneHabits.push(habit);
-    }
-  };
-  
-  
-  person.addHygieneHabit("Brush teeth", true);
-  person.addHygieneHabit("Wash face", true);
-  person.addHygieneHabit("Take medicine", false);
-  person.addHygieneHabit("Walk dog", true)
-  
-  function displayHygieneHabits() {
-    console.log(`${person.name}'s Hygiene Habits:`);
-    person.hygieneHabits.forEach((habit, index) => {
-      const status = habit.completed ? "✅" : "❌";
-      console.log(`${index + 1}. ${habit.name} ${status}`);
-    });
-  }
-  ß
-displayHygieneHabits();
-person.hygieneHabits[2].completed = true;
-  displayHygieneHabits();
+//start the game function
+game();
   
